@@ -109,7 +109,7 @@ width: 100%;
 }
 
  .menu_button{
-    background:url("/img/menu.png") 10px no-repeat;
+    background:url("./img/menu.png") 10px no-repeat;
     width:40px;
     height:40px;
     float:left;
@@ -127,7 +127,7 @@ width: 100%;
 }
 
 .search_button{
-    background:url("/img/search.png") 10px no-repeat;
+    background:url("./img/search.png") 10px no-repeat;
     width:40px;
     height:40px;
     float:left;
