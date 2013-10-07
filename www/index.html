@@ -9,11 +9,12 @@
     <script type="text/javascript" charset="utf-8">
 
         document.addEventListener("deviceready", onDeviceReady, false);
+        var fileSystemRoot = null;
+        var directory = null;
 
         function onDeviceReady() {
             window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, onRequestFileSystemSuccess, null);
-            window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, onFileSystemSuccess, fail);
-            window.resolveLocalFileSystemURI("file:///mobidik", onResolveSuccess, fail);
+            downloadFile();
 
             //var ref = window.open('http://apache.org', '_blank', 'location=no');
             //ref.addEventListener('loadstart', function (event) { alert('start: ' + event.url); });
@@ -22,11 +23,11 @@
             //ref.addEventListener('exit', function (event) { alert(event.type); });
         }
 
-        
+
 
         function onRequestFileSystemSuccess(fileSystem) {
-            var entry = fileSystem.root;
-            entry.getDirectory("Mobidik", { create: true, exclusive: false }, onGetDirectorySuccess, onGetDirectoryFail);
+            fileSystemRoot = fileSystem.root;
+            directory = fileSystemRoot.getDirectory("Mobidik", { create: true, exclusive: false }, onGetDirectorySuccess, onGetDirectoryFail);
         }
 
         function onGetDirectorySuccess(dir) {
@@ -37,31 +38,39 @@
             alert("Error creating directory " + error.code);
         }
 
-        function onFileSystemSuccess(fileSystem) {
-            alert(fileSystem.name);
-        }
 
-        function onResolveSuccess(fileEntry) {
-            alert(fileEntry.name);
-        }
+        function downloadFile() {
+            var sPath = directory.fullPath;
+            var fileTransfer = new FileTransfer();
 
-        function fail(evt) {
-            alert(evt.target.error.code);
-        }
+            fileTransfer.download(
+                "http://www.w3.org/2011/web-apps-ws/papers/Nitobi.pdf",
+                sPath + "theFile.pdf",
+                function (theFile) {
+                    console.log("download complete: " + theFile.toURI());
+                    showLink(theFile.toURI());
+                },
+                function (error) {
+                    alert("download error source " + error.source);
+                    alert("download error target " + error.target);
+                    alert("upload error code: " + error.code);
+                }
+            );
+        };
 
 
     </script>
 </head>
 <body>
     <div class="header">
-          <div class="title">mobidik</div>
-        
+        <div class="title">mobidik</div>
+
 
     </div>
-  <div class="menu_button"></div> 
-    <div class="search_button"></div> 
+    <div class="menu_button"></div>
+    <div class="search_button"></div>
 
-     <span id="ready"></span>
+    <span id="ready"></span>
 </body>
 </html>
 
