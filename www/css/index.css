@@ -147,6 +147,8 @@ img {
     background: #50b29e;
     float: left;
     width: 100%;
+    position:relative;
+    z-index:2;
 }
 
 
@@ -190,9 +192,11 @@ img {
     width: 100%;
     background: #fff;
     display: table;
-    -moz-box-shadow: 0px 1px 4px #b7b7b7;
-    -webkit-box-shadow: 0px 1px 4px #b7b7b7;
-    box-shadow: 0px 1px 4px #b7b7b7;
+    -moz-box-shadow: 0px 1px 4px rgba(0,0,0,0.2);
+    -webkit-box-shadow: 0px 1px 4px rgba(0,0,0,0.2);
+    box-shadow: 0px 1px 4px rgba(0,0,0,0.2);
+    position:relative;
+    z-index:2;
 }
 
     .sub_menu .item {
@@ -215,9 +219,9 @@ img {
     bottom:0px;
     overflow-x:hidden;
     overflow-y:auto;
-    top:120px;
+    top:115px;
     width:100%;
-    margin-right:-30px;
+    z-index:1;
 }
 
 .book_list {
