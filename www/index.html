@@ -27,10 +27,11 @@
 
         function onRequestFileSystemSuccess(fileSystem) {
             fileSystemRoot = fileSystem.root;
-            directory = fileSystemRoot.getDirectory("Mobidik", { create: true, exclusive: false }, onGetDirectorySuccess, onGetDirectoryFail);
+            fileSystemRoot.getDirectory("Mobidik", { create: true, exclusive: false }, onGetDirectorySuccess, onGetDirectoryFail);
         }
 
         function onGetDirectorySuccess(dir) {
+            directory = dir;
             alert("Created dir " + dir.name);
         }
 
