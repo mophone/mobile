@@ -17,156 +17,229 @@
  * under the License.
  */
 * {
-    -webkit-touch-callout: none;                /* prevent callout to copy image, etc when tap to hold */
-    -webkit-text-size-adjust: none;             /* prevent webkit from resizing text to fit */
+    -webkit-touch-callout: none; /* prevent callout to copy image, etc when tap to hold */
+    -webkit-text-size-adjust: none; /* prevent webkit from resizing text to fit */
     -webkit-tap-highlight-color: rgba(0,0,0,0); /* make transparent link selection, adjust last value opacity 0 to 1.0 */
-    -webkit-user-select: none;                  /* prevent copy paste, to allow, change 'none' to 'text' */
+    -webkit-user-select: none; /* prevent copy paste, to allow, change 'none' to 'text' */
 }
 
 body {
-    background-color:#f8f8f5;
-   font-family: "wf_SegoeUILight","wf_SegoeUI","Tahoma","Verdana","Arial","sans-serif";
-    font-size:12px;
-    height:100%;
-    margin:0px;
-    padding:0px;
-    width:100%;
+    background-color: #f8f8f5;
+    font-family: "wf_SegoeUILight","wf_SegoeUI","Tahoma","Verdana","Arial","sans-serif";
+    font-size: 12px;
+    height: 100%;
+    margin: 0px;
+    padding: 0px;
+    width: 100%;
 }
 
 /* Portrait layout (default) */
 .app {
-    background:url(../img/logo.png) no-repeat center top; /* 170px x 200px */
-    position:absolute;             /* position in the center of the screen */
-    left:50%;
-    top:50%;
-    height:50px;                   /* text area height */
-    width:225px;                   /* text area width */
-    text-align:center;
-    padding:180px 0px 0px 0px;     /* image height is 200px (bottom 20px are overlapped with text) */
-    margin:-115px 0px 0px -112px;  /* offset vertical: half of image height and text area height */
-                                   /* offset horizontal: half of text area width */
+    background: url(../img/logo.png) no-repeat center top; /* 170px x 200px */
+    position: absolute; /* position in the center of the screen */
+    left: 50%;
+    top: 50%;
+    height: 50px; /* text area height */
+    width: 225px; /* text area width */
+    text-align: center;
+    padding: 180px 0px 0px 0px; /* image height is 200px (bottom 20px are overlapped with text) */
+    margin: -115px 0px 0px -112px; /* offset vertical: half of image height and text area height */
+    /* offset horizontal: half of text area width */
 }
 
 /* Landscape layout (with min-width) */
 @media screen and (min-aspect-ratio: 1/1) and (min-width:400px) {
     .app {
-        background-position:left center;
-        padding:75px 0px 75px 170px;  /* padding-top + padding-bottom + text area = image height */
-        margin:-90px 0px 0px -198px;  /* offset vertical: half of image height */
-                                      /* offset horizontal: half of image width and text area width */
+        background-position: left center;
+        padding: 75px 0px 75px 170px; /* padding-top + padding-bottom + text area = image height */
+        margin: -90px 0px 0px -198px; /* offset vertical: half of image height */
+        /* offset horizontal: half of image width and text area width */
     }
 }
 
 h1 {
-    font-size:24px;
-    font-weight:normal;
-    margin:0px;
-    overflow:visible;
-    padding:0px;
-    text-align:center;
+    font-size: 24px;
+    font-weight: normal;
+    margin: 0px;
+    overflow: visible;
+    padding: 0px;
+    text-align: center;
 }
 
 .status {
-    background-color:#333333;
-    border-radius:4px;
-    -webkit-border-radius:4px;
-    color:#FFFFFF;
-    font-size:12px;
-    margin:0px 30px;
-    padding:2px 0px;
+    background-color: #333333;
+    border-radius: 4px;
+    -webkit-border-radius: 4px;
+    color: #FFFFFF;
+    font-size: 12px;
+    margin: 0px 30px;
+    padding: 2px 0px;
 }
 
-.status.complete {
-    background-color:#4B946A;
-}
+    .status.complete {
+        background-color: #4B946A;
+    }
 
 .hide {
-    display:none;
+    display: none;
 }
 
 @keyframes fade {
-    from { opacity: 1.0; }
-    50% { opacity: 0.4; }
-    to { opacity: 1.0; }
-}
- 
-@-webkit-keyframes fade {
-    from { opacity: 1.0; }
-    50% { opacity: 0.4; }
-    to { opacity: 1.0; }
-}
- 
-.blink {
-    animation:fade 3000ms infinite;
-    -webkit-animation:fade 3000ms infinite;
+    from {
+        opacity: 1.0;
+    }
+
+    50% {
+        opacity: 0.4;
+    }
+
+    to {
+        opacity: 1.0;
+    }
 }
 
-.clear{
-    clear:both;
+@-webkit-keyframes fade {
+    from {
+        opacity: 1.0;
+    }
+
+    50% {
+        opacity: 0.4;
+    }
+
+    to {
+        opacity: 1.0;
+    }
+}
+
+.blink {
+    animation: fade 3000ms infinite;
+    -webkit-animation: fade 3000ms infinite;
+}
+
+.clear {
+    clear: both;
+}
+
+ul {
+    padding: 0px;
+    margin: 0px;
+}
+
+li {
+    list-style-type: none;
+}
+
+img {
+    border: 0px !important;
+    margin: 0px;
+    display: block;
 }
 
 *, *:before, *:after {
     -moz-box-sizing: border-box;
-    -webkit-box-sizing:border-box;
-    box-sizing:border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
 }
 
-.header{
-    height:44pt;
-    background:#50b29e;
+.header {
+    height: 44pt;
+    background: #50b29e;
     float: left;
-width: 100%;
+    width: 100%;
+    position: fixed;
+    z-index: 2;
 }
 
- .menu_button{
-    background:url("../img/menu_h.png") 12pt no-repeat;
-     background-size: 20px 20px;
-    -webkit-background-size:20px 20px;
-    -moz-background-size:20px 20px;
-    width:44pt;
-    height:44pt;
-    float:left;
+.menu_button {
+    background: url("../img/menu_h.png") 12pt no-repeat;
+    background-size: 20px 20px;
+    -webkit-background-size: 20px 20px;
+    -moz-background-size: 20px 20px;
+    width: 44pt;
+    height: 44pt;
+    float: left;
     margin-left: -100%;
 }
 
-
-
-.header .title{
-    text-align:center;
-    font-size:16pt;
-    padding-top:11pt;
-    color:#fff;
-    font-weight:400;
-    font-family:"Open Sans";
-    margin: 0 0px 0 0px; 
+.header .title {
+    text-align: center;
+    font-size: 16pt;
+    padding-top: 11pt;
+    color: #fff;
+    font-weight: 400;
+    font-family: "Open Sans";
+    margin: 0 0px 0 0px;
 }
 
-.search_button{
-    background:url("../img/search_h.png") 12pt no-repeat;
-     background-size: 20px 20px;
-    -webkit-background-size:20px 20px;
-    -moz-background-size:20px 20px;
-    width:44pt;
-    height:44pt;
-    float:left;
+.search_button {
+    background: url("../img/search_h.png") 12pt no-repeat;
+    background-size: 20px 20px;
+    -webkit-background-size: 20px 20px;
+    -moz-background-size: 20px 20px;
+    width: 44pt;
+    height: 44pt;
+    float: left;
     margin-left: -44pt;
 }
 
-.sub_menu{
-    width:100%;
-    background:#fff;
-    display:table;
+.sub_menu {
+    width: 100%;
+    background: #fff;
+    display: table;
+    -moz-box-shadow: 0px 1px 4px #b7b7b7;
+    -webkit-box-shadow: 0px 1px 4px #b7b7b7;
+    box-shadow: 0px 1px 4px #b7b7b7;
+    position: fixed;
+    z-index: 2;
 }
 
-.sub_menu .item{
-    text-align:center;
-    padding:20px;
-    display:table-cell;
-    font-family:"Open Sans";
-    font-weight:300;
-    font-size:13px;
+    .sub_menu .item {
+        text-align: center;
+        padding: 20px;
+        display: table-cell;
+        font-family: "Open Sans";
+        font-weight: 300;
+        font-size: 12px;
+    }
+
+        .sub_menu .item.active {
+            background: #f2f2f2;
+        }
+
+
+.content {
+    padding: 10px;
+    padding-top: 70px;
 }
 
-.sub_menu .item.active{
-    background:#f2f2f2;
+.book_list {
+    width: 100%;
+    margin-top: 5px;
+    overflow: hidden;
 }
+
+    .book_list > li {
+        box-shadow: 4px 4px 0px 0px rgba(0, 0, 0, 0.1);
+        -webkit-box-shadow: 4px 4px 0px 0px rgba(0, 0, 0, 0.1);
+        position: relative;
+        margin-bottom: 17px;
+        overflow: hidden;
+    }
+
+        .book_list > li .info {
+            padding: 10px;
+            background: #fff;
+            overflow: hidden;
+        }
+
+            .book_list > li .info .name {
+                font-size: 13px;
+                color: #666;
+            }
+
+            .book_list > li .info .authors {
+                font-size: 11px;
+                color: #999;
+                margin-top: 5px;
+            }
