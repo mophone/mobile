@@ -101,6 +101,16 @@ h1 {
     -webkit-animation:fade 3000ms infinite;
 }
 
+.clear{
+    clear:both;
+}
+
+*, *:before, *:after {
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing:border-box;
+    box-sizing:border-box;
+}
+
 .header{
     height:44pt;
     background:#50b29e;
@@ -142,3 +152,21 @@ width: 100%;
     margin-left: -44pt;
 }
 
+.sub_menu{
+    width:100%;
+    background:#fff;
+    display:table;
+}
+
+.sub_menu .item{
+    text-align:center;
+    padding:20px;
+    display:table-cell;
+    font-family:"Open Sans";
+    font-weight:300;
+    font-size:100%;
+}
+
+.sub_menu .item.active{
+    background:#f2f2f2;
+}

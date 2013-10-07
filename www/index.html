@@ -13,8 +13,8 @@
         var directory = null;
 
         function onDeviceReady() {
-            window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, onRequestFileSystemSuccess, null);
-            downloadFile();
+            //window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, onRequestFileSystemSuccess, null);
+            //downloadFile();
 
             //var ref = window.open('http://apache.org', '_blank', 'location=no');
             //ref.addEventListener('loadstart', function (event) { alert('start: ' + event.url); });
@@ -64,13 +64,15 @@
 <body>
     <div class="header">
         <div class="title">mobidik</div>
-
-
     </div>
     <div class="menu_button"></div>
     <div class="search_button"></div>
-
-    <span id="ready"></span>
+    <div class="clear"></div>
+    <div class="sub_menu">
+        <div class="item">mobidik'ten</div>
+        <div class="item">en yeniler</div>
+        <div class="item">çok okunanlar</div>
+    </div>
 </body>
 </html>
 
