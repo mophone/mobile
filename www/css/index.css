@@ -110,11 +110,21 @@ width: 100%;
 
  .menu_button{
     background:url("../img/menu.png") 10px no-repeat;
-    -webkit-background-size:contain;
+     background-size: 200px 300px;
+    -webkit-background-size:20px 20px;
     width:40px;
     height:40px;
     float:left;
     margin-left: -100%;
+}
+
+ @media only screen and (-Webkit-min-device-pixel-ratio: 1.5),
+only screen and (-moz-min-device-pixel-ratio: 1.5),
+only screen and (-o-min-device-pixel-ratio: 3/2),
+only screen and (min-device-pixel-ratio: 1.5) {
+  .menu_button {
+    background-image: url("../img/search.png");
+  }
 }
 
 .header .title{
