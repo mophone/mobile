@@ -102,18 +102,18 @@ h1 {
 }
 
 .header{
-    height:40px;
+    height:50px;
     background:#50b29e;
     float: left;
 width: 100%;
 }
 
  .menu_button{
-    background:url("../img/menu.png") 10px no-repeat;
+    background:url("../img/menu.png") 15px no-repeat;
      background-size: 200px 300px;
     -webkit-background-size:20px 20px;
-    width:40px;
-    height:40px;
+    width:50px;
+    height:50px;
     float:left;
     margin-left: -100%;
 }
@@ -129,8 +129,8 @@ only screen and (min-device-pixel-ratio: 1.5) {
 
 .header .title{
     text-align:center;
-    font-size:16px;
-    padding-top:8px;
+    font-size:20px;
+    padding-top:11px;
     color:#fff;
     font-weight:300;
     font-family:"Open Sans";
@@ -138,9 +138,9 @@ only screen and (min-device-pixel-ratio: 1.5) {
 }
 
 .search_button{
-    background:url("../img/search.png") 10px no-repeat;
-    width:40px;
-    height:40px;
+    background:url("../img/search.png") 15px no-repeat;
+    width:50px;
+    height:50px;
     float:left;
-    margin-left: -40px;
+    margin-left: -50px;
 }
