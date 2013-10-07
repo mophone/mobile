@@ -110,6 +110,7 @@ width: 100%;
 
  .menu_button{
     background:url("../img/menu.png") 10px no-repeat;
+    -webkit-background-size:contain;
     width:40px;
     height:40px;
     float:left;
