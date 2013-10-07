@@ -33,13 +33,13 @@
                     "http://www.w3.org/2011/web-apps-ws/papers/Nitobi.pdf",
                     sPath + "theFile.pdf",
                     function (theFile) {
-                        console.log("download complete: " + theFile.toURI());
+                        alert("download complete: " + theFile.toURI());
                         showLink(theFile.toURI());
                     },
                     function (error) {
-                        console.log("download error source " + error.source);
-                        console.log("download error target " + error.target);
-                        console.log("upload error code: " + error.code);
+                        alert("download error source " + error.source);
+                        alert("download error target " + error.target);
+                        alert("upload error code: " + error.code);
                     }
                     );
                 },
@@ -47,6 +47,17 @@
             },
             fail);
         }
+
+        function showLink(url) {
+            alert(url);
+            var divEl = document.getElementById("ready");
+            var aElem = document.createElement("a");
+            aElem.setAttribute("target", "_blank");
+            aElem.setAttribute("href", url);
+            aElem.appendChild(document.createTextNode("Ready! Click To Open."))
+            divEl.appendChild(aElem);
+        }
+
 
         function fail(evt) {
             console.log(evt.target.error.code);
@@ -62,6 +73,8 @@
     </div>
   <div class="menu_button"></div> 
     <div class="search_button"></div> 
+
+     <span id="ready"></span>
 </body>
 </html>
 
