@@ -109,23 +109,17 @@ width: 100%;
 }
 
  .menu_button{
-    background:url("../img/menu.png") 12pt no-repeat;
-     background-size: 200px 300px;
+    background:url("../img/menu_h.png") 12pt no-repeat;
+     background-size: 20px 20px;
     -webkit-background-size:20px 20px;
+    -moz-background-size:20px 20px;
     width:44pt;
     height:44pt;
     float:left;
     margin-left: -100%;
 }
 
- @media only screen and (-Webkit-min-device-pixel-ratio: 1.5),
-only screen and (-moz-min-device-pixel-ratio: 1.5),
-only screen and (-o-min-device-pixel-ratio: 3/2),
-only screen and (min-device-pixel-ratio: 1.5) {
-  .menu_button {
-    background-image: url("../img/menu_h.png");
-  }
-}
+
 
 .header .title{
     text-align:center;
@@ -134,13 +128,17 @@ only screen and (min-device-pixel-ratio: 1.5) {
     color:#fff;
     font-weight:400;
     font-family:"Open Sans";
-    margin: 0 20px 0 20px; 
+    margin: 0 0px 0 0px; 
 }
 
 .search_button{
-    background:url("../img/search.png") 12pt no-repeat;
+    background:url("../img/search_h.png") 12pt no-repeat;
+     background-size: 20px 20px;
+    -webkit-background-size:20px 20px;
+    -moz-background-size:20px 20px;
     width:44pt;
     height:44pt;
     float:left;
     margin-left: -44pt;
 }
+
