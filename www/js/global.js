@@ -4,12 +4,16 @@
         var menu = document.getElementById("leftMenu");
         var curtain = document.getElementById("leftMenuCurtain");
         if (menu.getAttribute('data-closed') == "true") {
-            menu.style.left = "0px";
+            menu.style.transform = "translate(250px,0px)";
+            menu.style.MozTransform = "translate(250px,0px)";
+            menu.style.webkitTransform = "translate(250px,0px)";
             curtain.style.opacity = "0.3";
             menu.setAttribute('data-closed', false);
         }
         else {
-            menu.style.left = "-250px";
+            menu.style.transform = "translate(-250px,0px)";
+            menu.style.MozTransform = "translate(-250px,0px)";
+            menu.style.webkitTransform = "translate(-250px,0px)";
             curtain.style.opacity = "0";
             menu.setAttribute('data-closed', true);
         }

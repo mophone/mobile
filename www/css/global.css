@@ -155,10 +155,11 @@ img {
     -moz-transition: ease-in 0.2s;
     -webkit-transition: ease-in 0.2s;
     -o-transition: ease-in 0.2s;
-    transform: translate3d(0px,0px,0px);
-    -moz-transform: translate3d(0px,0px,0px);
-    -webkit-transform: translate3d(0px,0px,0px);
+    transform: translate3d(0,0,0);
+    -moz-transform: translate3d(0,0,0);
+    -webkit-transform: translate3d(0,0,0);
 }
+
 .left_menu {
     position: absolute;
     top: 50px;
@@ -171,64 +172,63 @@ img {
     -moz-transition: ease-out 0.3s;
     -webkit-transition: ease-out 0.3s;
     -o-transition: ease-out 0.3s;
-    transform:translate3d(0px,0px,0px);
-    -moz-transform:translate3d(0px,0px,0px);
-    -webkit-transform: translate3d(0px,0px,0px);
+    transform: translate3d(0,0,0);
+    -moz-transform: translate3d(0,0,0);
+    -webkit-transform: translate3d(0,0,0);
 }
 
-.left_menu .user_info{
-    background:#efefeb;
-    padding:10px;
-    overflow:hidden;
-    display:table;
-    width:100%;
+    .left_menu .user_info {
+        background: #efefeb;
+        padding: 10px;
+        overflow: hidden;
+        display: table;
+        width: 100%;
+    }
+
+        .left_menu .user_info .avatar {
+            display: table-cell;
+            width: 65px;
+        }
+
+
+            .left_menu .user_info .avatar img {
+                border-radius: 32px;
+                width: 65px;
+                height: 65px;
+            }
+
+        .left_menu .user_info .user_name {
+            margin-left: 10px;
+            font-size: 16px;
+            font-family: "Open Sans";
+            font-weight: 300;
+            color: #666;
+            width: 130px;
+            display: table-cell;
+            vertical-align: middle;
+        }
+
+.left_menu_items {
 }
 
-.left_menu .user_info .avatar{
-    display:table-cell;
-    width:65px;
-}
+    .left_menu_items li {
+        font-size: 14px;
+        color: #666;
+        background-size: 24px 24px;
+        background-repeat: no-repeat;
+        background-position: 15px 15px;
+        line-height: 55px;
+        padding-left: 52px;
+        border-bottom: 1px solid #f3f3f3;
+    }
 
+        .left_menu_items li.library {
+            background-image: url(../img/library.png);
+        }
 
-.left_menu .user_info .avatar img{
-    border-radius:32px;
-    width:65px;
-    height:65px;
-}
-
-.left_menu .user_info .user_name{
-   margin-left:10px;
-   font-size:16px;
-   font-family:"Open Sans";
-   font-weight:300;
-   color:#666;
-   width:130px;
-    display:table-cell;
-    vertical-align:middle;
-}
-
-.left_menu_items{
-
-}
-
-.left_menu_items li{
-    font-size:14px;
-    color:#666;
-    background-size:24px 24px;
-    background-repeat:no-repeat;
-    background-position:15px 15px;
-    line-height:55px;
-    padding-left:52px;
-    border-bottom:1px solid #f3f3f3;
-}
-
-.left_menu_items li.library{
-    background-image:url(../img/library.png);
-}
-
-.left_menu_items li.followings{
-    background-image:url(../img/users.png);
-}
+        .left_menu_items li.followings {
+            background-image: url(../img/users.png);
+        }
 
 .header {
     height: 50px;
