@@ -1,5 +1,6 @@
 ﻿var leftMenu = {
     status: false,
+    curtainDisplay: null,
     toggle: function () {
         var menu = document.getElementById("leftMenu");
         if (menu.getAttribute('data-closed') == "true") {
@@ -15,8 +16,9 @@
         menu.style.transform = "translate(250px,0px)";
         menu.style.MozTransform = "translate(250px,0px)";
         menu.style.webkitTransform = "translate(250px,0px)";
+        clearTimeout(leftMenu.curtainDisplay);
         curtain.style.display = "block";
-        curtain.style.opacity = "0.3";
+        curtain.style.opacity = "0.4";
         menu.setAttribute('data-closed', false);
 
         if (!leftMenu.status) {
@@ -36,9 +38,9 @@
         menu.style.MozTransform = "translate(-250px,0px)";
         menu.style.webkitTransform = "translate(-250px,0px)";
         curtain.style.opacity = "0";
-        setTimeout(function () {
+        leftMenu.curtainDisplay = setTimeout(function () {
             curtain.style.display = "none";
-        });
+        }, 1000);
         menu.setAttribute('data-closed', true);
     }
 }
@@ -50,7 +52,7 @@ var global = {
         document.getElementById("leftMenuCurtain").addEventListener("click", function () {
             leftMenu.toggle();
         }, false);
-        
+
 
         var touches = []
         Hammer(window).on("swipeleft", function (event) {
