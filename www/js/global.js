@@ -53,7 +53,14 @@ var global = {
         
 
         Event.add(window, "swipe", function (event, self) {
-            alert(self.gesture)
+            if (self.angle == 90)
+            {
+                leftMenu.open;
+            }
+            else if (self.angle == 270)
+            {
+                leftMenu.close;
+            }
         });
     }
 }
