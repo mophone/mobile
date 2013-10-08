@@ -25,6 +25,10 @@
     </script>
 </head>
 <body>
+    <div class="left_menu_curtain" id="leftMenuCurtain"></div>
+    <div class="left_menu" id="leftMenu" data-closed="true">
+    </div>
+
     <div class="header">
         <div class="title">mobidik</div>
     </div>
@@ -103,20 +107,20 @@
         else if (windowWidth > 480)
             itemCount = 3;
 
-        $("#bookList img").each(function () {
-            var src = $(this).data("src") + "" + windowWidth + "/0.jpg";
-            $(this).attr("src", src);
-            $(this).attr("width", (windowWidth - 16 - itemCount * 10) / itemCount + "px");
-        });
+        //$("#bookList img").each(function () {
+        //    var src = $(this).data("src") + "" + windowWidth + "/0.jpg";
+        //    $(this).attr("src", src);
+        //    $(this).attr("width", (windowWidth - 16 - itemCount * 10) / itemCount + "px");
+        //});
 
-        $("#bookList").imagesLoaded(function () {
-            $("#bookList").animate({ opacity: 1 });
-            $("#bookList").masonry({
-                itemSelector: '.item',
-                columnWidth: (windowWidth - 16 - itemCount * 10) / itemCount,
-                gutter: 12
-            });
-        });
+        //$("#bookList").imagesLoaded(function () {
+        //    $("#bookList").animate({ opacity: 1 });
+        //    $("#bookList").masonry({
+        //        itemSelector: '.item',
+        //        columnWidth: (windowWidth - 16 - itemCount * 10) / itemCount,
+        //        gutter: 12
+        //    });
+        //});
     </script>
 </body>
 </html>
