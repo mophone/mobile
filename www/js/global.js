@@ -2,29 +2,44 @@
     status: false,
     toggle: function () {
         var menu = document.getElementById("leftMenu");
-        var curtain = document.getElementById("leftMenuCurtain");
         if (menu.getAttribute('data-closed') == "true") {
-            menu.style.transform = "translate(250px,0px)";
-            menu.style.MozTransform = "translate(250px,0px)";
-            menu.style.webkitTransform = "translate(250px,0px)";
-            curtain.style.opacity = "0.3";
-            menu.setAttribute('data-closed', false);
+            leftMenu.open();
         }
         else {
-            menu.style.transform = "translate(-250px,0px)";
-            menu.style.MozTransform = "translate(-250px,0px)";
-            menu.style.webkitTransform = "translate(-250px,0px)";
-            curtain.style.opacity = "0";
-            menu.setAttribute('data-closed', true);
+            leftMenu.close();
         }
+    },
+    open: function () {
+        var menu = document.getElementById("leftMenu");
+        var curtain = document.getElementById("leftMenuCurtain");
+        menu.style.transform = "translate(250px,0px)";
+        menu.style.MozTransform = "translate(250px,0px)";
+        menu.style.webkitTransform = "translate(250px,0px)";
+        curtain.style.display = "block";
+        curtain.style.opacity = "0.3";
+        menu.setAttribute('data-closed', false);
+
         if (!leftMenu.status) {
             setTimeout(function () {
                 $.get("./leftMenu.html", function (data) {
                     menu.insertAdjacentHTML("afterbegin", data);
-                    leftMenu.status = true;
                 });
             }, 500);
+
+            leftMenu.status = true;
         }
+    },
+    close: function () {
+        var menu = document.getElementById("leftMenu");
+        var curtain = document.getElementById("leftMenuCurtain");
+        menu.style.transform = "translate(-250px,0px)";
+        menu.style.MozTransform = "translate(-250px,0px)";
+        menu.style.webkitTransform = "translate(-250px,0px)";
+        curtain.style.opacity = "0";
+        setTimeout(function () {
+            curtain.style.display = "none";
+        });
+        menu.setAttribute('data-closed', true);
     }
 }
 var global = {
@@ -32,6 +47,14 @@ var global = {
         document.getElementById("btnLeftMenu").addEventListener("click", function () {
             leftMenu.toggle();
         }, false);
+        document.getElementById("leftMenuCurtain").addEventListener("click", function () {
+            leftMenu.toggle();
+        }, false);
+        
+
+        Event.add(window, "swipe", function (event, self) {
+            alert(self.gesture)
+        });
     }
 }
 $(document).ready(function () {
