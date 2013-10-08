@@ -14,12 +14,12 @@
             var curtain = $("#leftMenuCurtain");
             if (menu.data("closed")) {
                 menu.transition({ width: 250 }, 200);
-                curtain.animate({ opacity: 0.3 }, 100);
+                curtain.transition({ opacity: 0.3 }, 100);
                 menu.data("closed", false);
             }
             else {
                 menu.transition({ width: 0 }, 200);
-                curtain.animate({ opacity: 0 }, 100);
+                curtain.transition({ opacity: 0 }, 100);
                 menu.data("closed", true);
             }
         }
