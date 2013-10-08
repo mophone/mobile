@@ -1,24 +1,24 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2012
-Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "www", "www\", "{4CD42D5C-926A-4A3B-8299-5492DABB596A}"
+Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "www", "www\", "{20DA6013-4F24-4724-A9EC-ADACC9331CFD}"
 	ProjectSection(WebsiteProperties) = preProject
 		TargetFrameworkMoniker = ".NETFramework,Version%3Dv4.0"
 		Debug.AspNetCompiler.VirtualPath = "/www"
-		Debug.AspNetCompiler.PhysicalPath = "..\..\..\GitHub\phonegap\www\"
+		Debug.AspNetCompiler.PhysicalPath = "..\..\..\GitHub\mobile\www\"
 		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\www\"
 		Debug.AspNetCompiler.Updateable = "true"
 		Debug.AspNetCompiler.ForceOverwrite = "true"
 		Debug.AspNetCompiler.FixedNames = "false"
 		Debug.AspNetCompiler.Debug = "True"
 		Release.AspNetCompiler.VirtualPath = "/www"
-		Release.AspNetCompiler.PhysicalPath = "..\..\..\GitHub\phonegap\www\"
+		Release.AspNetCompiler.PhysicalPath = "..\..\..\GitHub\mobile\www\"
 		Release.AspNetCompiler.TargetPath = "PrecompiledWeb\www\"
 		Release.AspNetCompiler.Updateable = "true"
 		Release.AspNetCompiler.ForceOverwrite = "true"
 		Release.AspNetCompiler.FixedNames = "false"
 		Release.AspNetCompiler.Debug = "False"
-		VWDPort = "27952"
+		VWDPort = "4282"
 	EndProjectSection
 EndProject
 Global
@@ -26,8 +26,8 @@ Global
 		Debug|Any CPU = Debug|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{4CD42D5C-926A-4A3B-8299-5492DABB596A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{4CD42D5C-926A-4A3B-8299-5492DABB596A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{20DA6013-4F24-4724-A9EC-ADACC9331CFD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{20DA6013-4F24-4724-A9EC-ADACC9331CFD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

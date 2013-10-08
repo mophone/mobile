@@ -17,7 +17,7 @@
         menu.style.MozTransform = "translate(250px,0px)";
         menu.style.webkitTransform = "translate(250px,0px)";
         clearTimeout(leftMenu.curtainDisplay);
-        curtain.style.display = "block";
+        curtain.style.right = "0";
         curtain.style.opacity = "0.4";
         menu.setAttribute('data-closed', false);
 
@@ -38,28 +38,29 @@
         menu.style.MozTransform = "translate(-250px,0px)";
         menu.style.webkitTransform = "translate(-250px,0px)";
         curtain.style.opacity = "0";
+       
         leftMenu.curtainDisplay = setTimeout(function () {
-            curtain.style.display = "none";
-        }, 1000);
+            curtain.style.right = "auto";
+        }, 200);
         menu.setAttribute('data-closed', true);
     }
 }
 var global = {
     setupBindings: function () {
-        document.getElementById("btnLeftMenu").addEventListener("click", function () {
+        Hammer(document.getElementById("btnLeftMenu")).on("tap", function () {
             leftMenu.toggle();
-        }, false);
-        document.getElementById("leftMenuCurtain").addEventListener("click", function () {
+        });
+        Hammer(document.getElementById("leftMenuCurtain")).on("tap", function () {
             leftMenu.toggle();
         }, false);
 
 
         var touches = []
-        Hammer(window).on("swipeleft", function (event) {
+        Hammer(document).on("swipeleft", function (event) {
             leftMenu.close();
         });
 
-        Hammer(window).on("swiperight", function (event) {
+        Hammer(document).on("swiperight", function (event) {
             leftMenu.open();
         });
     }
