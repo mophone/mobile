@@ -38,7 +38,7 @@
         menu.style.MozTransform = "translate(-250px,0px)";
         menu.style.webkitTransform = "translate(-250px,0px)";
         curtain.style.opacity = "0";
-       
+
         leftMenu.curtainDisplay = setTimeout(function () {
             curtain.style.right = "auto";
         }, 200);
@@ -46,16 +46,16 @@
     }
 }
 var global = {
+    apiAddress: "http://192.168.2.77:1002/",
     setupBindings: function () {
         Hammer(document.getElementById("btnLeftMenu")).on("tap", function () {
             leftMenu.toggle();
         });
+
         Hammer(document.getElementById("leftMenuCurtain")).on("tap", function () {
             leftMenu.toggle();
         }, false);
 
-
-        var touches = []
         Hammer(document).on("swipeleft", function (event) {
             leftMenu.close();
         });
@@ -63,10 +63,36 @@ var global = {
         Hammer(document).on("swiperight", function (event) {
             leftMenu.open();
         });
+    },
+    loadHoverable: function () {
+        var hoverable = document.querySelector(".hoverable");
+        hoverable.addEventListener("touchstart", function () {
+            hoverable.classList.add("active");
+        });
+
+        hoverable.addEventListener("touchend", function () {
+            hoverable.classList.remove("active");
+        });
+    },
+    get: function (url, callback, type) {
+        $.ajax({
+            url: url,
+            dataType: "jsonp",
+            method: "GET",
+            beforeSend: function (xhr) {
+                if (type == "jsonp") {
+                    xhr.setRequestHeader('Accept', 'application/json');
+                    xhr.setRequestHeader('Content-Type', 'application/json');
+                }
+            }
+        }).done(function (data) {
+            callback(data);
+        }).fail(function (jqXHR, textStatus, errorThrown) { });
     }
 }
 $(document).ready(function () {
     global.setupBindings();
+    global.loadHoverable();
 });
 
 window.addEventListener('load', function () {

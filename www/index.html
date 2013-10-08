@@ -3,7 +3,7 @@
 <head>
     <title>mobidik mobil</title>
     <meta charset="iso-8859-9">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, target-densitydpi=medium-dpi, user-scalable=0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, target-densitydpi=device-dpi, user-scalable=0" />
     <link href="./css/global.css" rel="stylesheet" />
     <link rel="stylesheet" href="./css/index.css" />
     <link rel="stylesheet" href="./css/fonts.css" />
@@ -14,6 +14,7 @@
     <script src="js/plugins/fastclick.js"></script>
     <script src="js/plugins/hammer.js"></script>
     <script src="./js/global.js"></script>
+    <script src="js/index.js"></script>
     <!-- <script type="text/javascript" charset="utf-8" src="phonegap.js"></script>-->
 
     <script type="text/javascript" charset="utf-8">
@@ -27,6 +28,7 @@
     </script>
 </head>
 <body>
+    <div id="ppitest" style="width:1in;visible:hidden;padding:0px"></div>
     <div class="left_menu_curtain" id="leftMenuCurtain"></div>
     <div class="left_menu" id="leftMenu" data-closed="true">
     </div>
@@ -34,8 +36,8 @@
     <div class="header">
         <div class="title">mobidik</div>
     </div>
-    <div class="menu_button" id="btnLeftMenu"></div>
-    <div class="search_button"></div>
+    <div class="menu_button hoverable" id="btnLeftMenu"></div>
+    <div class="search_button hoverable"></div>
     <div class="clear"></div>
     <div class="sub_menu">
         <div class="item active">mobidik'ten</div>
@@ -45,86 +47,13 @@
     <div class="clear"></div>
     <div class="content" id="content">
         <ul class="book_list" id="bookList">
-            <li class="item">
-                <div class="cover">
-                    <img data-src="http://www.mobidik.com/resim/kitap/49/" />
-                </div>
-                <div class="info">
-                    <div class="name">
-                        Eroini Bırakmak
-                    </div>
-                    <div class="authors">
-                        Arzach Mills
-                    </div>
-                </div>
-            </li>
-            <li class="item">
-                <div class="cover">
-                    <img data-src="http://www.mobidik.com/resim/kitap/43/" />
-                </div>
-                <div class="info">
-                    <div class="name">
-                        On Üç
-                    </div>
-                    <div class="authors">
-                        Kaan Kısakürek
-                    </div>
-                </div>
-            </li>
-            <li class="item">
-                <div class="cover">
-                    <img data-src="http://www.mobidik.com/resim/kitap/61/" />
-                </div>
-                <div class="info">
-                    <div class="name">
-                        Şizofrenin İntiharı
-                    </div>
-                    <div class="authors">
-                        Erdem Küçükıslıkçı
-                    </div>
-                </div>
-            </li>
-            <li class="item">
-                <div class="cover">
-                    <img data-src="http://www.mobidik.com/resim/kitap/59/" />
-                </div>
-                <div class="info">
-                    <div class="name">
-                        Yalnızlık Üzerine
-                    </div>
-                    <div class="authors">
-                        Hamdi Ekmen
-                    </div>
-                </div>
-            </li>
+            
         </ul>
     </div>
     <script>
-        var windowWidth = window.innerWidth;
-        var windowHeight = window.innerHeight;
-        var itemCount = 2;
 
-        if (windowWidth > 800)
-            itemCount = 6;
-        else if (windowWidth > 600)
-            itemCount = 4;
-        else if (windowWidth > 480)
-            itemCount = 3;
 
-        $("#bookList img").each(function () {
-            var src = $(this).data("src") + "" + windowWidth + "/0.jpg";
-            $(this).attr("src", src);
-            $(this).attr("width", (windowWidth - 16 - itemCount * 10) / itemCount + "px");
-        });
-
-        $("#bookList").imagesLoaded(function () {
-            $("#bookList").animate({ opacity: 1 });
-            $("#bookList").masonry({
-                itemSelector: '.item',
-                columnWidth: (windowWidth - 16 - itemCount * 10) / itemCount,
-                gutter: 12
-            });
-        });
+        homeBooks.getBooks("promoted");
     </script>
 </body>
 </html>

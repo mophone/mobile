@@ -216,6 +216,11 @@ img {
         line-height: 55px;
         padding-left: 52px;
         border-bottom: 1px solid #f3f3f3;
+        background-color:transparent;
+    }
+
+    .left_menu_items li.active{
+        background-color:#e5e5e5;
     }
 
         .left_menu_items li.library {
@@ -224,6 +229,14 @@ img {
 
         .left_menu_items li.followings {
             background-image: url(../img/users.png);
+        }
+
+         .left_menu_items li.categories {
+            background-image: url(../img/categories.png);
+        }
+
+             .left_menu_items li.settings {
+            background-image: url(../img/settings.png);
         }
 
 .header {
@@ -244,7 +257,7 @@ img {
     }
 
 .menu_button {
-    background: url("../img/menu_h.png") 12pt no-repeat;
+    background: url("../img/menu_h.png") 12pt no-repeat transparent;
     background-size: 20px 20px;
     -webkit-background-size: 20px 20px;
     -moz-background-size: 20px 20px;
@@ -254,6 +267,11 @@ img {
     left: 0px;
     top: 0px;
     z-index: 3;
+}
+
+.menu_button.active{
+    background-color:#74d1be;
+    
 }
 
 
