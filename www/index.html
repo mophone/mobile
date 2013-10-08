@@ -3,86 +3,41 @@
 <head>
     <title>mobidik mobil</title>
     <meta charset="iso-8859-9">
-   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, target-densitydpi=medium-dpi, user-scalable=0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, target-densitydpi=medium-dpi, user-scalable=0" />
+    <link href="./css/global.css" rel="stylesheet" />
     <link rel="stylesheet" href="./css/index.css" />
     <link rel="stylesheet" href="./css/fonts.css" />
-    <link href="./css/font-awesome.min.css" rel="stylesheet" />
-    <script src="js/jquery-1.10.2.js"></script>
-    <script src="js/jquery.mansory.js"></script>
-    <script src="js/imagesloaded.js"></script>
+    <script src="./js/plugins/jquery-1.10.2.js"></script>
+    <script src="./js/plugins/jquery.mansory.js"></script>
+    <script src="./js/plugins/imagesloaded.js"></script>
+    <script src="./js/global.js"></script>
     <!-- <script type="text/javascript" charset="utf-8" src="phonegap.js"></script>-->
 
     <script type="text/javascript" charset="utf-8">
-
         document.addEventListener("deviceready", onDeviceReady, false);
         var fileSystemRoot = null;
         var directory = null;
 
         function onDeviceReady() {
-            //window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, onRequestFileSystemSuccess, null);
-            //downloadFile();
 
-            //var ref = window.open('http://apache.org', '_blank', 'location=no');
-            //ref.addEventListener('loadstart', function (event) { alert('start: ' + event.url); });
-            //ref.addEventListener('loadstop', function (event) { alert('stop: ' + event.url); });
-            //ref.addEventListener('loaderror', function (event) { alert('error: ' + event.message); });
-            //ref.addEventListener('exit', function (event) { alert(event.type); });
         }
-
-
-
-        function onRequestFileSystemSuccess(fileSystem) {
-            fileSystemRoot = fileSystem.root;
-            fileSystemRoot.getDirectory("Mobidik", { create: true, exclusive: false }, onGetDirectorySuccess, onGetDirectoryFail);
-        }
-
-        function onGetDirectorySuccess(dir) {
-            directory = dir;
-            alert("Created dir " + dir.name);
-        }
-
-        function onGetDirectoryFail(error) {
-            alert("Error creating directory " + error.code);
-        }
-
-
-        function downloadFile() {
-            var sPath = directory.fullPath;
-            var fileTransfer = new FileTransfer();
-
-            fileTransfer.download(
-                "http://www.w3.org/2011/web-apps-ws/papers/Nitobi.pdf",
-                sPath + "/theFile.pdf",
-                function (theFile) {
-                    alert("download complete:");
-                },
-                function (error) {
-                    alert("download error source " + error.source);
-                    alert("download error target " + error.target);
-                    alert("upload error code: " + error.code);
-                }
-            );
-        };
-
-
     </script>
 </head>
 <body>
     <div class="header">
         <div class="title">mobidik</div>
     </div>
-    <div class="menu_button"></div>
+    <div class="menu_button" id="btnLeftMenu"></div>
     <div class="search_button"></div>
     <div class="clear"></div>
     <div class="sub_menu">
-        <div class="item">mobidik'ten</div>
+        <div class="item active">mobidik'ten</div>
         <div class="item">en yeniler</div>
         <div class="item">çok okunanlar</div>
     </div>
     <div class="clear"></div>
-    <div class="content">
+    <div class="content" id="content">
         <ul class="book_list" id="bookList">
-            <li class="grid-sizer"></li>
             <li class="item">
                 <div class="cover">
                     <img data-src="http://www.mobidik.com/resim/kitap/49/" />
@@ -140,16 +95,25 @@
     <script>
         var windowWidth = window.innerWidth;
         var windowHeight = window.innerHeight;
+        var itemCount = 2;
+
+        if (windowWidth > 600)
+            itemCount = 4;
+        else if (windowWidth > 480)
+            itemCount = 3;
 
         $("#bookList img").each(function () {
-            var src = $(this).data("src") + "140/0.jpg";
+            var src = $(this).data("src") + "" + windowWidth + "/0.jpg";
             $(this).attr("src", src);
+            $(this).attr("width", (windowWidth - 16 - itemCount * 10) / itemCount + "px");
         });
 
         $("#bookList").imagesLoaded(function () {
+            $("#bookList").animate({ opacity: 1 });
             $("#bookList").masonry({
                 itemSelector: '.item',
-                columnWidth: 150
+                columnWidth: (windowWidth - 16 - itemCount * 10) / itemCount,
+                gutter: 12
             });
         });
     </script>
