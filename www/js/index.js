@@ -19,10 +19,7 @@ var homeBooks = {
                   '</li>';
             }
 
-            alert(getPPI());
-
             document.getElementById("bookList").innerHTML = html;
-
             var windowWidth = window.innerWidth;
             var windowHeight = window.innerHeight;
             var itemCount = 2;
@@ -35,7 +32,7 @@ var homeBooks = {
                 itemCount = 3;
 
             $("#bookList img").each(function () {
-                var src = $(this).data("src") + "" + (windowWidth - 16 - itemCount * 10) / itemCount + "/0.jpg";
+                var src = $(this).data("src") + "" + ((windowWidth - 16 - itemCount * 10) / itemCount) * window.devicePixelRatio + "/0.jpg";
                 $(this).attr("src", src);
                 $(this).attr("width", (windowWidth - 16 - itemCount * 10) / itemCount + "px");
             });
