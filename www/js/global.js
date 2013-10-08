@@ -33,3 +33,7 @@ var global = {
 $(document).ready(function () {
     global.setupBindings();
 });
+
+window.addEventListener('load', function () {
+    FastClick.attach(document.body);
+}, false);
