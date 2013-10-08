@@ -52,15 +52,13 @@ var global = {
         }, false);
         
 
-        Event.add(window, "swipe", function (event, self) {
-            if (self.angle == 90)
-            {
-                leftMenu.open;
-            }
-            else if (self.angle == 270)
-            {
-                leftMenu.close;
-            }
+        var touches = []
+        Hammer(window).on("swipeleft", function (event) {
+            leftMenu.close();
+        });
+
+        Hammer(window).on("swiperight", function (event) {
+            leftMenu.open();
         });
     }
 }
