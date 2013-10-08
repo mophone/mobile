@@ -200,7 +200,6 @@ img {
         .left_menu .user_info .user_name {
             margin-left: 10px;
             font-size: 16px;
-            font-family: "Open Sans";
             font-weight: 300;
             color: #666;
             width: 130px;
@@ -212,7 +211,7 @@ img {
 }
 
     .left_menu_items li {
-        font-size: 14px;
+        font-size: 13px;
         color: #666;
         background-size: 24px 24px;
         background-repeat: no-repeat;
@@ -242,11 +241,9 @@ img {
 
     .header .title {
         text-align: center;
-        font-size: 16pt;
-        padding-top: 11pt;
+        font-size: 20px;
+        line-height:50px;
         color: #fff;
-        font-weight: 400;
-        font-family: "Open Sans";
     }
 
 .menu_button {
@@ -292,8 +289,6 @@ img {
         padding: 15px;
         padding-bottom: 11px;
         display: table-cell;
-        font-family: "Open Sans";
-        font-weight: 300;
         font-size: 12px;
     }
 
