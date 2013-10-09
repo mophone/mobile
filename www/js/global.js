@@ -1,4 +1,22 @@
-﻿var leftMenu = {
+﻿
+Element.prototype.hasClassName = function (name) {
+    return new RegExp("(?:^|\\s+)" + name + "(?:\\s+|$)").test(this.className);
+};
+
+Element.prototype.addClassName = function (name) {
+    if (!this.hasClassName(name)) {
+        this.className = this.className ? [this.className, name].join(' ') : name;
+    }
+};
+
+Element.prototype.removeClassName = function (name) {
+    if (this.hasClassName(name)) {
+        var c = this.className;
+        this.className = c.replace(new RegExp("(?:^|\\s+)" + name + "(?:\\s+|$)", "g"), "");
+    }
+};
+
+var leftMenu = {
     status: false,
     curtainDisplay: null,
     toggle: function () {
@@ -54,15 +72,13 @@ var headerSearch = {
         if (!headerSearch.status) {
             document.getElementById("headerTitle").style.display = "none";
             document.getElementById("headerSearchArea").style.display = "block";
-            document.getElementById("btnHeaderSearch").style.transform = "translate(-" + (document.getElementById("txtHeaderSearch").clientWidth - 20) + "px,0)";
-            document.getElementById("btnHeaderSearch").style.webkitTransform = "translate(-" + (document.getElementById("txtHeaderSearch").clientWidth - 20) + "px,0)";
+            document.getElementById("btnHeaderSearch").style.right = document.getElementById("txtHeaderSearch").clientWidth - 20 + "px";
             document.getElementById("txtHeaderSearch").focus();
             headerSearch.status = true;
         }
         else {
             document.getElementById("headerTitle").style.display = "block";
-            document.getElementById("btnHeaderSearch").style.transform = "translate(0px,0)";
-            document.getElementById("btnHeaderSearch").style.webkitTransform = "translate(0,0)";
+            document.getElementById("btnHeaderSearch").style.right = "0px";
             document.getElementById("headerSearchArea").style.display = "none";
             setTimeout(function () {
                 headerSearch.status = false;
@@ -76,6 +92,7 @@ var global = {
     setupBindings: function () {
         document.getElementById("btnLeftMenu").addEventListener("click", function () {
             leftMenu.toggle();
+
         });
 
         document.getElementById("leftMenuCurtain").addEventListener("click", function () {
@@ -123,6 +140,7 @@ var global = {
                 }
             }
         }).done(function (data) {
+            
             callback(data);
         }).fail(function (jqXHR, textStatus, errorThrown) { });
 

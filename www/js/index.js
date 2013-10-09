@@ -3,27 +3,31 @@ var homeBooks = {
     activeTab: 0,
     activeAjax: null,
     openTab: function (el) {
+        
         homeBooks.activeTab = el.getAttribute("data-action") * 1;
         homeBooks.getBooks();
+
     },
     getBooks: function () {
         document.getElementById("content").style.overflowY = "hidden";
 
         var homeButtons = document.querySelectorAll(".sub_menu .item");
-
+     
         [].forEach.call(homeButtons, function (el) {
-            el.classList.remove("active");
+            el.removeClassName("active");
+            
         });
+       
         var el = document.querySelector("[data-action='" + homeBooks.activeTab + "']");
-        el.classList.add("active");
-
+        el.addClassName("active");
+        
         var type = homeBooks.tabs[homeBooks.activeTab];
-
+        
         document.getElementById("bookList").innerHTML = "";
         document.getElementById("bookList").style.height = "auto";
 
         global.openContentLoader();
-
+       
         if (homeBooks.activeAjax)
             homeBooks.activeAjax.abort();
         homeBooks.activeAjax = global.get(global.apiAddress + "books/" + type, function (data) {

@@ -35,13 +35,13 @@
 
     <div class="header">
         <div class="title" id="headerTitle">mobidik</div>
-        <div class="search_area" id="headerSearchArea"><input placeholder="e-kitap ara" value="e-kitap ara" id="txtHeaderSearch" /></div>
+        <div class="search_area" id="headerSearchArea"><input placeholder="e-kitap ara" id="txtHeaderSearch" /></div>
     </div>
     <div class="menu_button hoverable" id="btnLeftMenu"></div>
     <div class="search_button hoverable" id="btnHeaderSearch"></div>
     <div class="clear"></div>
     <div class="sub_menu">
-        <div class="item active fastbutton" id="btnPromotedBooks" data-action="0">mobidik'ten</div>
+        <div class="item fastbutton active" id="btnPromotedBooks" data-action="0">mobidik'ten</div>
         <div class="item fastbutton" id="btnNewestBooks" data-action="1">en yeniler</div>
         <div class="item fastbutton" id="btnMostSellBooks" data-action="2">çok okunanlar</div>
     </div>
@@ -52,7 +52,6 @@
         </ul>
     </div>
     <script>
-
         homeBooks.setupBindings();
         homeBooks.openTab(document.getElementById("btnPromotedBooks"));
     </script>
