@@ -40,9 +40,9 @@
     <div class="search_button hoverable"></div>
     <div class="clear"></div>
     <div class="sub_menu">
-        <div class="item active" id="btnPromotedBooks" data-action="promoted">mobidik'ten</div>
-        <div class="item" id="btnNewestBooks" data-action="newest">en yeniler</div>
-        <div class="item" id="btnMostSellBooks" data-action="sell">çok okunanlar</div>
+        <div class="item active" id="btnPromotedBooks" data-action="0">mobidik'ten</div>
+        <div class="item" id="btnNewestBooks" data-action="1">en yeniler</div>
+        <div class="item" id="btnMostSellBooks" data-action="2">çok okunanlar</div>
     </div>
     <div class="clear"></div>
     <div class="content" id="content">
@@ -53,7 +53,7 @@
     <script>
 
         homeBooks.setupBindings();
-        homeBooks.getBooks("promoted");
+        homeBooks.openTab(document.getElementById("btnPromotedBooks"));
     </script>
 </body>
 </html>

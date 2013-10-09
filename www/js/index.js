@@ -1,12 +1,30 @@
 var homeBooks = {
-    activeTab: null,
-    getBooks: function (type) {
+    tabs: ["promoted", "newest", "sell"],
+    activeTab: 0,
+    activeAjax: null,
+    openTab: function (el) {
+        homeBooks.activeTab = el.getAttribute("data-action") * 1;
+        homeBooks.getBooks();
+    },
+    getBooks: function () {
+        var homeButtons = document.querySelectorAll(".sub_menu .item");
+
+        [].forEach.call(homeButtons, function (el) {
+            el.classList.remove("active");
+        });
+        var el = document.querySelector("[data-action='" + homeBooks.activeTab + "']");
+        el.classList.add("active");
+
+        var type = homeBooks.tabs[homeBooks.activeTab];
+
         document.getElementById("bookList").innerHTML = "";
         document.getElementById("bookList").style.height = "auto";
+
         global.openContentLoader();
-        homeBooks.activeTab = type;
-       
-        global.get(global.apiAddress + "books/" + type, function (data) {
+
+        if (homeBooks.activeAjax)
+            homeBooks.activeAjax.abort();
+        homeBooks.activeAjax = global.get(global.apiAddress + "books/" + type, function (data) {
             var html = "";
             for (var i = 0; i < data.length; i++) {
                 html += '<li class="item">' +
@@ -55,30 +73,44 @@ var homeBooks = {
                 if ($("#bookList").hasClass("isotope"))
                     $("#bookList").isotope('destroy');
 
-                    $("#bookList").isotope({
-                        itemSelector: '.item'
-                    }, function () {
-                        global.closeContentLoader();
-                    });
+                $("#bookList").isotope({
+                    itemSelector: '.item'
+                }, function () {
+                    global.closeContentLoader();
+                });
 
 
-              
+
 
             });
         }, "jsonp");
+    },
+    prevTab: function () {
+        if (homeBooks.activeTab != 0) {
+            homeBooks.activeTab--;
+            homeBooks.getBooks();
+        }
+    },
+    nextTab: function () {
+        if (homeBooks.activeTab + 1 != homeBooks.tabs.length) {
+            homeBooks.activeTab++;
+            homeBooks.getBooks();
+        }
     },
     setupBindings: function () {
         var homeButtons = document.querySelectorAll(".sub_menu .item");
         for (var i = 0; i < homeButtons.length; i++) {
             Hammer(homeButtons[i]).on("tap", function () {
-                [].forEach.call(homeButtons, function (el) {
-                    el.classList.remove("active");
-                });
-                this.classList.add("active");
-                homeBooks.getBooks(this.getAttribute("data-action"));
+                homeBooks.openTab(this);
             });
         }
 
+        Hammer(document).on("swipeleft", function (event) {
+            homeBooks.nextTab();
+        });
 
+        Hammer(document).on("swiperight", function (event) {
+            homeBooks.prevTab();
+        });
     }
 }

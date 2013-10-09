@@ -56,13 +56,13 @@ var global = {
             leftMenu.toggle();
         }, false);
 
-        Hammer(document).on("swipeleft", function (event) {
-            leftMenu.close();
-        });
+        //Hammer(document).on("swipeleft", function (event) {
+        //    leftMenu.close();
+        //});
 
-        Hammer(document).on("swiperight", function (event) {
-            leftMenu.open();
-        });
+        //Hammer(document).on("swiperight", function (event) {
+        //    leftMenu.open();
+        //});
     },
     loadHoverable: function () {
         var hoverable = document.querySelector(".hoverable");
@@ -75,7 +75,7 @@ var global = {
         });
     },
     get: function (url, callback, type) {
-        $.ajax({
+        var ajax = $.ajax({
             url: url,
             dataType: "jsonp",
             method: "GET",
@@ -88,10 +88,12 @@ var global = {
         }).done(function (data) {
             callback(data);
         }).fail(function (jqXHR, textStatus, errorThrown) { });
+
+        return ajax;
     },
     openContentLoader: function () {
         document.getElementById("contentLoader").style.display = "block";
-        if (document.querySelector("#contentLoader .spinner")==null)
+        if (document.querySelector("#contentLoader .spinner") == null)
             global.loadSpinner(document.getElementById("contentLoader"));
     },
     closeContentLoader: function () {
