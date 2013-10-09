@@ -55,15 +55,18 @@ var headerSearch = {
             document.getElementById("headerTitle").style.display = "none";
             document.getElementById("headerSearchArea").style.display = "block";
             document.getElementById("btnHeaderSearch").style.transform = "translate(-" + (document.getElementById("txtHeaderSearch").clientWidth - 20) + "px,0)";
+            document.getElementById("btnHeaderSearch").style.webkitTransform = "translate(-" + (document.getElementById("txtHeaderSearch").clientWidth - 20) + "px,0)";
             document.getElementById("txtHeaderSearch").focus();
             headerSearch.status = true;
         }
         else {
             document.getElementById("headerTitle").style.display = "block";
+            document.getElementById("btnHeaderSearch").style.transform = "translate(0px,0)";
+            document.getElementById("btnHeaderSearch").style.webkitTransform = "translate(0,0)";
             document.getElementById("headerSearchArea").style.display = "none";
-            document.getElementById("btnHeaderSearch").style.right = "0px";
-            document.getElementById("txtHeaderSearch").blur();
-            headerSearch.status = false;
+            setTimeout(function () {
+                headerSearch.status = false;
+            }, 300);
         }
     }
 }
@@ -79,11 +82,14 @@ var global = {
             leftMenu.toggle();
         }, false);
 
-        document.getElementById("btnHeaderSearch").addEventListener("click", function () {
-            headerSearch.toggle();
+        document.getElementById("btnHeaderSearch").addEventListener("click", function (e) {
+
+            if (!headerSearch.status)
+                headerSearch.toggle();
         });
 
-        document.getElementById("txtHeaderSearch").addEventListener("blur", function () {
+        document.getElementById("txtHeaderSearch").addEventListener("blur", function (e) {
+            e.stopPropagation();
             headerSearch.toggle();
         });
 

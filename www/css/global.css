@@ -303,7 +303,7 @@ img {
         top: 10px;
         bottom: 10px;
         left: 80px;
-       display:none;
+        display: none;
     }
 
         .header .search_area input {
@@ -313,12 +313,27 @@ img {
             padding: 5px;
             color: #fff;
             padding-left: 20px;
-            width:100%;
-            
+            width: 100%;
         }
 
             .header .search_area input:focus {
                 outline: none;
+            }
+
+            .header .search_area input::-webkit-input-placeholder { /* WebKit browsers */
+                color: #d4ede8;
+            }
+
+            .header .search_area input:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+                color: #d4ede8;
+            }
+
+            .header .search_area input::-moz-placeholder { /* Mozilla Firefox 19+ */
+                color: #d4ede8;
+            }
+
+            .header .search_area input:-ms-input-placeholder { /* Internet Explorer 10+ */
+                color: #d4ede8;
             }
 
 .menu_button {
