@@ -11,6 +11,7 @@
         }
     },
     open: function () {
+        document.getElementById("content").style.overflowY = "hidden";
         var menu = document.getElementById("leftMenu");
         var curtain = document.getElementById("leftMenuCurtain");
         menu.style.transform = "translate(250px,0px)";
@@ -32,6 +33,7 @@
         }
     },
     close: function () {
+        document.getElementById("content").style.overflowY = "auto";
         var menu = document.getElementById("leftMenu");
         var curtain = document.getElementById("leftMenuCurtain");
         menu.style.transform = "translate(-250px,0px)";
@@ -56,13 +58,13 @@ var global = {
             leftMenu.toggle();
         }, false);
 
-        //Hammer(document).on("swipeleft", function (event) {
-        //    leftMenu.close();
-        //});
+        Hammer(document).on("swipeleft", function (event) {
+            leftMenu.close();
+        });
 
-        //Hammer(document).on("swiperight", function (event) {
-        //    leftMenu.open();
-        //});
+        Hammer(document).on("swiperight", function (event) {
+            leftMenu.open();
+        });
     },
     loadHoverable: function () {
         var hoverable = document.querySelector(".hoverable");

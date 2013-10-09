@@ -105,12 +105,12 @@ var homeBooks = {
             });
         }
 
-        Hammer(document).on("swipeleft", function (event) {
-            homeBooks.nextTab();
-        });
+        //Hammer(document).on("swipeleft", function (event) {
+        //    homeBooks.nextTab();
+        //});
 
-        Hammer(document).on("swiperight", function (event) {
-            homeBooks.prevTab();
-        });
+        //Hammer(document).on("swiperight", function (event) {
+        //    homeBooks.prevTab();
+        //});
     }
 }
