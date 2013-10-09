@@ -315,7 +315,6 @@ img {
 
 
 .content {
-    padding: 10px;
     position: absolute;
     bottom: 0px;
     overflow-x: hidden;
@@ -338,7 +337,7 @@ img {
     }
 
     .content .loader .image{
-        background:url(../img/small_trans.gif) no-repeat;
+       
         width:32px;
         height:32px;
         margin-left:auto;

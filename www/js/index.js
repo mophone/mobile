@@ -40,14 +40,14 @@ var homeBooks = {
             for (var i = 0; i < images.length; i++) {
                 var src = images[i].getAttribute("data-src") + "" + imageWidth + "/0.jpg";
                 images[i].setAttribute("src", src);
-                images[i].setAttribute("width", (windowWidth - 16 - itemCount * 10) / itemCount + "px");
+                images[i].setAttribute("width", (windowWidth - 18 - itemCount * 10) / itemCount + "px");
             }
 
             imagesLoaded(document.querySelector('#bookList'), function (instance) {
 
                 var items = document.querySelectorAll("#bookList li");
                 for (var i = 0; i < images.length; i++) {
-                    items[i].style.width = ((windowWidth - 16 - itemCount * 10) / itemCount) + "px";
+                    items[i].style.width = ((windowWidth - 18 - itemCount * 10) / itemCount) + "px";
                 }
 
                 if ($("#bookList").hasClass("isotope"))
