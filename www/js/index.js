@@ -48,13 +48,13 @@ var homeBooks = {
           
 
             imagesLoaded(document.querySelector('#bookList'), function (instance) {
-                var items = document.querySelectorAll("#bookList li");
-                for (var i = 0; i < images.length; i++) {
-                    items[i].style.width = items[i].clientWidth - 5 + "px";
-                }
-                global.closeContentLoader();
+                //var items = document.querySelectorAll("#bookList li");
+                //for (var i = 0; i < images.length; i++) {
+                //    items[i].style.width = items[i].clientWidth - 5 + "px";
+                //}
+              
             });
-           
+            global.closeContentLoader();
         }, "jsonp");
     },
     setupBindings: function () {
