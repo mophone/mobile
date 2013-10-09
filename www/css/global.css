@@ -31,6 +31,7 @@ body {
     margin: 0px;
     padding: 0px;
     width: 100%;
+    overflow:hidden;
 }
 
 /* Portrait layout (default) */
@@ -175,6 +176,7 @@ img {
     transform: translate3d(0,0,0);
     -moz-transform: translate3d(0,0,0);
     -webkit-transform: translate3d(0,0,0);
+    height:100%;
 }
 
     .left_menu .user_info {
@@ -187,19 +189,19 @@ img {
 
         .left_menu .user_info .avatar {
             display: table-cell;
-            width: 65px;
+            width: 40px;
         }
 
 
             .left_menu .user_info .avatar img {
-                border-radius: 32px;
-                width: 65px;
-                height: 65px;
+                border-radius: 20px;
+                width: 40px;
+                height: 40px;
             }
 
         .left_menu .user_info .user_name {
             margin-left: 10px;
-            font-size: 16px;
+            font-size: 14px;
             font-weight: 300;
             color: #666;
             width: 130px;
@@ -208,15 +210,22 @@ img {
         }
 
 .left_menu_items {
+    position:absolute;
+    bottom:190px;
+    top:60px;
+    right:0;
+    left:0;
+    overflow-x:hidden;
+    overflow-y:auto;
 }
 
     .left_menu_items li {
         font-size: 13px;
         color: #666;
-        background-size: 24px 24px;
+        background-size: 22px 22px;
         background-repeat: no-repeat;
         background-position: 15px 15px;
-        line-height: 55px;
+        line-height: 52px;
         padding-left: 52px;
         border-bottom: 1px solid #f3f3f3;
         background-color: transparent;
@@ -240,6 +249,37 @@ img {
 
         .left_menu_items li.settings {
             background-image: url(../img/settings.png);
+        }
+
+        .left_menu .last_read{
+            position:absolute;
+            bottom:0px;
+            height:190px;
+            right:0px;
+            left:0px;
+            overflow:hidden;
+            background:#efefeb;
+        }
+
+        .left_menu .last_read .last_read_header{
+            font-size:12px;
+            color:#666;
+            line-height:20px;
+             margin-left:10px;
+             margin-top:10px;
+        }
+
+        .left_menu .last_read img{
+            margin-top:5px;
+        }
+
+        .left_menu .last_read .last_read_books{
+
+        }
+
+        .left_menu .last_read .last_read_books li{
+            float:left;
+            margin-left:10px;
         }
 
 .header {

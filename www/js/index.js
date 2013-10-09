@@ -1,9 +1,11 @@
 var homeBooks = {
     activeTab: null,
     getBooks: function (type) {
+        document.getElementById("bookList").innerHTML = "";
+        document.getElementById("bookList").style.height = "auto";
         global.openContentLoader();
         homeBooks.activeTab = type;
-        document.getElementById("bookList").innerHTML = "";
+       
         global.get(global.apiAddress + "books/" + type, function (data) {
             var html = "";
             for (var i = 0; i < data.length; i++) {
@@ -34,20 +36,20 @@ var homeBooks = {
             else if (windowWidth > 480)
                 itemCount = 3;
 
-            var imageWidth = Math.round(((windowWidth - 16 - itemCount * 10) / itemCount) * window.devicePixelRatio);
+            var imageWidth = Math.round(((windowWidth - itemCount * 16) / itemCount) * window.devicePixelRatio);
 
             var images = document.querySelectorAll("#bookList img");
             for (var i = 0; i < images.length; i++) {
                 var src = images[i].getAttribute("data-src") + "" + imageWidth + "/0.jpg";
                 images[i].setAttribute("src", src);
-                images[i].setAttribute("width", (windowWidth - 18 - itemCount * 10) / itemCount + "px");
+                images[i].setAttribute("width", (windowWidth - itemCount * 16) / itemCount + "px");
             }
 
             imagesLoaded(document.querySelector('#bookList'), function (instance) {
 
                 var items = document.querySelectorAll("#bookList li");
                 for (var i = 0; i < images.length; i++) {
-                    items[i].style.width = ((windowWidth - 18 - itemCount * 10) / itemCount) + "px";
+                    items[i].style.width = ((windowWidth - itemCount * 16) / itemCount) + "px";
                 }
 
                 if ($("#bookList").hasClass("isotope"))
