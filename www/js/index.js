@@ -35,28 +35,38 @@ var homeBooks = {
                 itemCount = 3;
 
             var imageWidth = Math.round(((windowWidth - 16 - itemCount * 10) / itemCount) * window.devicePixelRatio);
+
             var images = document.querySelectorAll("#bookList img");
             for (var i = 0; i < images.length; i++) {
                 var src = images[i].getAttribute("data-src") + "" + imageWidth + "/0.jpg";
                 images[i].setAttribute("src", src);
+                images[i].setAttribute("width", (windowWidth - 16 - itemCount * 10) / itemCount + "px");
             }
-          
 
             imagesLoaded(document.querySelector('#bookList'), function (instance) {
-               
 
-                
-                document.getElementById("bookList").style.columnCount = itemCount;
-                document.getElementById("bookList").style.MozColumnCount = itemCount;
-                document.getElementById("bookList").style.webkitColumnCount = itemCount;
 
-                //var items = document.querySelectorAll("#bookList li");
-                //for (var i = 0; i < images.length; i++) {
-                //    items[i].style.width = items[i].clientWidth - 5 + "px";
-                //}
-              
+                var msnry = Masonry.data(document.getElementById("bookList"));
+
+                if (typeof msnry != "undefined")
+                    msnry.destroy();
+
+                var items = document.querySelectorAll("#bookList li");
+                for (var i = 0; i < images.length; i++) {
+                    items[i].style.width = ((windowWidth - 16 - itemCount * 10) / itemCount) + "px";
+                }
+
+
+                new Masonry(document.querySelector('#bookList'), {
+                    itemSelector: '.item',
+                    isAnimated: false,
+                    gutter: 12
+                });
+
+
+                global.closeContentLoader();
+
             });
-            global.closeContentLoader();
         }, "jsonp");
     },
     setupBindings: function () {
