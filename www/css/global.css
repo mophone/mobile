@@ -155,6 +155,9 @@ img {
     -moz-transition: opacity 0.3s;
     -webkit-transition: opacity 0.3s;
     -o-transition: opacity 0.3s;
+    transform: translate3d(0,0,0);
+    -moz-transform: translate3d(0,0,0);
+    -webkit-transform: translate3d(0,0,0);
 }
 
 .left_menu {
@@ -216,12 +219,12 @@ img {
         line-height: 55px;
         padding-left: 52px;
         border-bottom: 1px solid #f3f3f3;
-        background-color:transparent;
+        background-color: transparent;
     }
 
-    .left_menu_items li.active{
-        background-color:#e5e5e5;
-    }
+        .left_menu_items li.active {
+            background-color: #e5e5e5;
+        }
 
         .left_menu_items li.library {
             background-image: url(../img/library.png);
@@ -231,11 +234,11 @@ img {
             background-image: url(../img/users.png);
         }
 
-         .left_menu_items li.categories {
+        .left_menu_items li.categories {
             background-image: url(../img/categories.png);
         }
 
-             .left_menu_items li.settings {
+        .left_menu_items li.settings {
             background-image: url(../img/settings.png);
         }
 
@@ -252,7 +255,7 @@ img {
     .header .title {
         text-align: center;
         font-size: 20px;
-        line-height:50px;
+        line-height: 50px;
         color: #fff;
     }
 
@@ -269,10 +272,9 @@ img {
     z-index: 3;
 }
 
-.menu_button.active{
-    background-color:#74d1be;
-    
-}
+    .menu_button.active {
+        background-color: #74d1be;
+    }
 
 
 .search_button {
@@ -323,30 +325,65 @@ img {
     z-index: 1;
 }
 
+    .content .loader {
+        position: absolute;
+        z-index: 999;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        top: 0;
+        background: #f8f8f5;
+        display: none;
+        text-align: center;
+    }
+
+        .content .loader .image {
+            background: url(../img/small_trans.gif) no-repeat;
+            width: 32px;
+            height: 32px;
+            margin-left: auto;
+            margin-right: auto;
+            margin-top: 50px;
+        }
+
 .book_list {
     width: 100%;
     margin-top: 5px;
-    overflow: hidden;
-    opacity: 0;
+    transition: opacity 0.3s;
+    -moz-transition: opacity 0.3s;
+    -webkit-transition: opacity 0.3s;
+    -o-transition: opacity 0.3s;
+    transform: translate3d(0,0,0);
+    -moz-transform: translate3d(0,0,0);
+    -webkit-transform: translate3d(0,0,0);
+    column-count: 6;
+    column-gap: 13px;
+    -moz-column-count: 6;
+    -moz-column-gap: 13px; 13px; 13px;
+    -webkit-column-count: 6;
+    -webkit-column-gap: 13px;
 }
 
     .book_list > li {
+        display:inline-block;
         box-shadow: 4px 4px 0px 0px rgba(0, 0, 0, 0.1);
         -webkit-box-shadow: 4px 4px 0px 0px rgba(0, 0, 0, 0.1);
-        position: relative;
         margin-bottom: 17px;
-        overflow: hidden;
+    }
+
+    .book_list > li img{
+        width:100%;
     }
 
         .book_list > li .info {
             padding: 10px;
             background: #fff;
-            overflow: hidden;
         }
 
             .book_list > li .info .name {
                 font-size: 13px;
                 color: #666;
+                word-wrap: break-word;
             }
 
             .book_list > li .info .authors {

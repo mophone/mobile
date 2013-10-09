@@ -88,6 +88,12 @@ var global = {
         }).done(function (data) {
             callback(data);
         }).fail(function (jqXHR, textStatus, errorThrown) { });
+    },
+    openContentLoader: function () {
+        document.getElementById("contentLoader").style.display = "block";
+    },
+    closeContentLoader: function () {
+        document.getElementById("contentLoader").style.display = "none";
     }
 }
 $(document).ready(function () {

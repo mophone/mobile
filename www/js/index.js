@@ -1,16 +1,19 @@
 var homeBooks = {
+    activeTab: null,
     getBooks: function (type) {
-        global.get(global.apiAddress + "books/promoted", function (data) {
-            var html="";
+        global.openContentLoader();
+        homeBooks.activeTab = type;
+        document.getElementById("bookList").innerHTML = "";
+        global.get(global.apiAddress + "books/" + type, function (data) {
+            var html = "";
             for (var i = 0; i < data.length; i++) {
-                console.log(data[i]);
                 html += '<li class="item">' +
                     '<div class="cover">' +
-                          '<img data-src="http://www.mobidik.com/resim/kitap/'+data[i].BookID+'/" />' +
+                          '<img data-src="http://www.mobidik.com/resim/kitap/' + data[i].BookID + '/" />' +
                       '</div>' +
                       '<div class="info">' +
                           '<div class="name">' +
-                          'Eroini Býrakmak' +
+                          data[i].BookName +
                           '</div>' +
                           '<div class="authors">' +
                           'Arzach Mills' +
@@ -31,37 +34,38 @@ var homeBooks = {
             else if (windowWidth > 480)
                 itemCount = 3;
 
-            $("#bookList img").each(function () {
-                var src = $(this).data("src") + "" + ((windowWidth - 16 - itemCount * 10) / itemCount) * window.devicePixelRatio + "/0.jpg";
-                $(this).attr("src", src);
-                $(this).attr("width", (windowWidth - 16 - itemCount * 10) / itemCount + "px");
-            });
+            var imageWidth = Math.round(((windowWidth - 16 - itemCount * 10) / itemCount) * window.devicePixelRatio);
 
-            $("#bookList").imagesLoaded(function () {
-                $("#bookList").animate({ opacity: 1 });
-                $("#bookList").masonry({
-                    itemSelector: '.item',
-                    columnWidth: (windowWidth - 16 - itemCount * 10) / itemCount,
-                    gutter: 12
-                });
-            });
+            var images = document.querySelectorAll("#bookList img");
+            for (var i = 0; i < images.length; i++) {
+                var src = images[i].getAttribute("data-src") + "" + imageWidth + "/0.jpg";
+                images[i].setAttribute("src", src);
+            }
+            document.getElementById("bookList").style.columnCount = itemCount;
+            document.getElementById("bookList").style.MozColumnCount = itemCount;
+            document.getElementById("bookList").style.webkitColumnCount = itemCount;
+
+            var items = document.querySelectorAll("#bookList li");
+            for (var i = 0; i < images.length; i++) {
+                items[i].style.width = items[i].clientWidth - 5 + "px";
+            }
+
+
+            global.closeContentLoader();
         }, "jsonp");
+    },
+    setupBindings: function () {
+        var homeButtons = document.querySelectorAll(".sub_menu .item");
+        for (var i = 0; i < homeButtons.length; i++) {
+            Hammer(homeButtons[i]).on("tap", function () {
+                [].forEach.call(homeButtons, function (el) {
+                    el.classList.remove("active");
+                });
+                this.classList.add("active");
+                homeBooks.getBooks(this.getAttribute("data-action"));
+            });
+        }
+
+
     }
-
-}
-
-function getPPI() {
-    // create an empty element
-    var div = document.createElement("div");
-    // give it an absolute size of one inch
-    div.style.width = "1in";
-    // append it to the body
-    var body = document.getElementsByTagName("body")[0];
-    body.appendChild(div);
-    // read the computed width
-    var ppi = document.defaultView.getComputedStyle(div, null).getPropertyValue('width');
-    // remove it again
-    body.removeChild(div);
-    // and return the value
-    return parseFloat(ppi);
 }
