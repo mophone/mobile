@@ -365,10 +365,6 @@ img {
     right: 0px;
     top: 0px;
     z-index: 3;
-    transition: all 0.3s ease-out;
-    -moz-transition: all 0.3s ease-out;
-    -webkit-transition: all 0.3s ease-out;
-    -o-transition: all 0.3s ease-out;
 }
 
 
