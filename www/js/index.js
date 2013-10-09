@@ -45,26 +45,22 @@ var homeBooks = {
 
             imagesLoaded(document.querySelector('#bookList'), function (instance) {
 
-
-                var msnry = Masonry.data(document.getElementById("bookList"));
-
-                if (typeof msnry != "undefined")
-                    msnry.destroy();
-
                 var items = document.querySelectorAll("#bookList li");
                 for (var i = 0; i < images.length; i++) {
                     items[i].style.width = ((windowWidth - 16 - itemCount * 10) / itemCount) + "px";
                 }
 
+                if ($("#bookList").hasClass("isotope"))
+                    $("#bookList").isotope('destroy');
 
-                new Masonry(document.querySelector('#bookList'), {
-                    itemSelector: '.item',
-                    isAnimated: false,
-                    gutter: 12
-                });
+                    $("#bookList").isotope({
+                        itemSelector: '.item'
+                    }, function () {
+                        global.closeContentLoader();
+                    });
 
 
-                global.closeContentLoader();
+              
 
             });
         }, "jsonp");
