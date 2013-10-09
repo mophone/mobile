@@ -54,7 +54,7 @@ var headerSearch = {
         if (!headerSearch.status) {
             document.getElementById("headerTitle").style.display = "none";
             document.getElementById("headerSearchArea").style.display = "block";
-            document.getElementById("btnHeaderSearch").style.right = document.getElementById("txtHeaderSearch").clientWidth - 20 + "px";
+            document.getElementById("btnHeaderSearch").style.transform = "translate(-" + (document.getElementById("txtHeaderSearch").clientWidth - 20) + "px,0)";
             document.getElementById("txtHeaderSearch").focus();
             headerSearch.status = true;
         }
