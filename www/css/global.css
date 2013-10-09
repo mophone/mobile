@@ -297,6 +297,30 @@ img {
         color: #fff;
     }
 
+    .header .search_area {
+        position: absolute;
+        right: 10px;
+        top: 10px;
+        bottom: 10px;
+        left: 80px;
+       display:none;
+    }
+
+        .header .search_area input {
+            background: none;
+            border: 0px;
+            border-bottom: 1px solid #fff;
+            padding: 5px;
+            color: #fff;
+            padding-left: 20px;
+            width:100%;
+            
+        }
+
+            .header .search_area input:focus {
+                outline: none;
+            }
+
 .menu_button {
     background: url("../img/menu_h.png") 12pt no-repeat transparent;
     background-size: 20px 20px;
@@ -326,7 +350,12 @@ img {
     right: 0px;
     top: 0px;
     z-index: 3;
+    transition: all 0.3s ease-out;
+    -moz-transition: all 0.3s ease-out;
+    -webkit-transition: all 0.3s ease-out;
+    -o-transition: all 0.3s ease-out;
 }
+
 
 .sub_menu {
     width: 100%;

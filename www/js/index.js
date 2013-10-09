@@ -7,6 +7,8 @@ var homeBooks = {
         homeBooks.getBooks();
     },
     getBooks: function () {
+        document.getElementById("content").style.overflowY = "hidden";
+
         var homeButtons = document.querySelectorAll(".sub_menu .item");
 
         [].forEach.call(homeButtons, function (el) {
@@ -77,6 +79,7 @@ var homeBooks = {
                     itemSelector: '.item'
                 }, function () {
                     global.closeContentLoader();
+                    document.getElementById("content").style.overflowY = "auto";
                 });
 
 
@@ -99,8 +102,9 @@ var homeBooks = {
     },
     setupBindings: function () {
         var homeButtons = document.querySelectorAll(".sub_menu .item");
+
         for (var i = 0; i < homeButtons.length; i++) {
-            Hammer(homeButtons[i]).on("tap", function () {
+            homeButtons[i].addEventListener("click", function () {
                 homeBooks.openTab(this);
             });
         }

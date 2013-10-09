@@ -47,16 +47,45 @@
         menu.setAttribute('data-closed', true);
     }
 }
+
+var headerSearch = {
+    status: false,
+    toggle: function () {
+        if (!headerSearch.status) {
+            document.getElementById("headerTitle").style.display = "none";
+            document.getElementById("headerSearchArea").style.display = "block";
+            document.getElementById("btnHeaderSearch").style.right = document.getElementById("txtHeaderSearch").clientWidth - 20 + "px";
+            document.getElementById("txtHeaderSearch").focus();
+            headerSearch.status = true;
+        }
+        else {
+            document.getElementById("headerTitle").style.display = "block";
+            document.getElementById("headerSearchArea").style.display = "none";
+            document.getElementById("btnHeaderSearch").style.right = "0px";
+            document.getElementById("txtHeaderSearch").blur();
+            headerSearch.status = false;
+        }
+    }
+}
+
 var global = {
     apiAddress: "http://192.168.2.77:1002/",
     setupBindings: function () {
-        Hammer(document.getElementById("btnLeftMenu")).on("tap", function () {
+        document.getElementById("btnLeftMenu").addEventListener("click", function () {
             leftMenu.toggle();
         });
 
-        Hammer(document.getElementById("leftMenuCurtain")).on("tap", function () {
+        document.getElementById("leftMenuCurtain").addEventListener("click", function () {
             leftMenu.toggle();
         }, false);
+
+        document.getElementById("btnHeaderSearch").addEventListener("click", function () {
+            headerSearch.toggle();
+        });
+
+        document.getElementById("txtHeaderSearch").addEventListener("blur", function () {
+            headerSearch.toggle();
+        });
 
         Hammer(document).on("swipeleft", function (event) {
             leftMenu.close();
@@ -106,7 +135,7 @@ var global = {
             lines: 13, // The number of lines to draw
             length: 0, // The length of each line
             width: 7, // The line thickness
-            radius: 31, // The radius of the inner circle
+            radius: 21, // The radius of the inner circle
             corners: 1, // Corner roundness (0..1)
             rotate: 0, // The rotation offset
             direction: 1, // 1: clockwise, -1: counterclockwise
@@ -127,8 +156,7 @@ $(document).ready(function () {
     global.setupBindings();
 
     global.loadHoverable();
+
+    initFastButtons();
 });
 
-window.addEventListener('load', function () {
-    FastClick.attach(document.body);
-}, false);
