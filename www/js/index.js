@@ -45,13 +45,16 @@ var homeBooks = {
             document.getElementById("bookList").style.MozColumnCount = itemCount;
             document.getElementById("bookList").style.webkitColumnCount = itemCount;
 
-            var items = document.querySelectorAll("#bookList li");
-            for (var i = 0; i < images.length; i++) {
-                items[i].style.width = items[i].clientWidth - 5 + "px";
-            }
+          
 
-
-            global.closeContentLoader();
+            imagesLoaded(document.querySelector('#bookList'), function (instance) {
+                var items = document.querySelectorAll("#bookList li");
+                for (var i = 0; i < images.length; i++) {
+                    items[i].style.width = items[i].clientWidth - 5 + "px";
+                }
+                global.closeContentLoader();
+            });
+           
         }, "jsonp");
     },
     setupBindings: function () {
